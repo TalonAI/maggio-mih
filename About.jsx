@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 function About({ setActivePage }) {
   const wrap = { maxWidth: 1120, margin: '0 auto', padding: '0 40px' };
-  const [formState, setFormState] = React.useState({
+  const [formState, setFormState] = useState({
     name: '', email: '', company: '', role: '', message: '', context: '', submitted: false,
   });
 
@@ -20,227 +20,457 @@ function About({ setActivePage }) {
   };
 
   const inputStyle = {
-    fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-    color: '#1A1918', background: '#fff',
-    border: '1px solid #E2DDD8', borderRadius: 2,
-    padding: '12px 16px', width: '100%',
-    outline: 'none', boxSizing: 'border-box',
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 14,
+    color: '#1A1918',
+    background: '#fff',
+    border: '1px solid #E2DDD8',
+    borderRadius: 2,
+    padding: '12px 16px',
+    width: '100%',
+    outline: 'none',
+    boxSizing: 'border-box',
     transition: 'border-color 0.2s',
   };
+
   const labelStyle = {
-    fontFamily: "'DM Sans', sans-serif", fontSize: 12,
-    letterSpacing: '0.1em', textTransform: 'uppercase',
-    color: '#6B6560', display: 'block', marginBottom: 8,
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 12,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    color: '#6B6560',
+    display: 'block',
+    marginBottom: 8,
+    fontWeight: 700,
   };
+
   const fieldWrap = { marginBottom: 24 };
+
+  const strengths = [
+    ['COO-level judgment', 'Paul has sat close enough to the operating layer to understand how businesses actually run — not just how they look in a meeting or spreadsheet.'],
+    ['Military discipline', 'Air Force Academy training and Air Force service shaped a bias toward clarity, accountability, ownership, and calm execution under pressure.'],
+    ['Technical depth', 'Experience across technology, information management, AI, workflows, and systems helps translate between business needs and practical implementation.'],
+    ['Outside perspective', 'Most owners are too close to the daily fire to redesign the system. Paul brings a clear outside view without losing respect for how the business was built.'],
+  ];
+
+  const principles = [
+    ['Start with the real workflow', 'Before adding tools, I want to understand how the work actually moves today.'],
+    ['Use what already exists', 'Most businesses do not need another system first. They need clearer use of the systems already in place.'],
+    ['Make it useful quickly', 'A better dashboard, checklist, triage rule, or weekly rhythm is more valuable than a polished deck no one uses.'],
+    ['Build clarity that lasts', 'The goal is not dependency. The goal is stronger operating structure the team can maintain.'],
+  ];
 
   return (
     <div>
-      {/* Hero, chapel photo as full-bleed bg */}
+      {/* Hero */}
       <section style={{
-        position: 'relative', padding: '160px 40px 120px', color: '#fff', overflow: 'hidden',
+        position: 'relative',
+        padding: '160px 40px 118px',
+        color: '#fff',
+        overflow: 'hidden',
         backgroundImage: 'url(chapel.jpg)',
-        backgroundSize: 'cover', backgroundPosition: 'center 40%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 40%',
       }}>
-        {/* Dark overlay */}
         <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(27,43,66,0.92) 45%, rgba(27,43,66,0.55) 100%)',
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to right, rgba(27,43,66,0.94) 42%, rgba(27,43,66,0.58) 100%)',
         }} />
         <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: 600 }}>
-            <div style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 11,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.4)', marginBottom: 24,
-            }}>About</div>
-            <h1 style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 500,
-              lineHeight: 1.1, color: '#fff', margin: '0 0 28px',
-            }}>
-              Paul Maggio
-            </h1>
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 17,
-              lineHeight: 1.75, color: 'rgba(255,255,255,0.7)', maxWidth: 520,
-            }}>
-              Operator, problem-solver, and business builder focused on helping owners turn complexity into clear execution.
-            </p>
+          <div style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 12,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.70)',
+            fontWeight: 700,
+            marginBottom: 24,
+          }}>
+            About Paul Maggio
           </div>
+          <h1 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(44px, 6vw, 72px)',
+            fontWeight: 500,
+            lineHeight: 1.08,
+            color: '#fff',
+            margin: '0 0 28px',
+            maxWidth: 780,
+          }}>
+            Operator. Translator. Problem-solver.
+          </h1>
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 18,
+            lineHeight: 1.75,
+            color: 'rgba(255,255,255,0.78)',
+            maxWidth: 680,
+            marginBottom: 36,
+          }}>
+            I help owners and teams turn operational mess into clearer workflows, better visibility, and practical systems that make the business easier to run.
+          </p>
+          <Button onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
+            Start a Conversation
+          </Button>
         </div>
       </section>
 
-      {/* Bio */}
-      <section style={{ background: '#fff', padding: '80px 40px' }}>
+      {/* Background */}
+      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80 }}>
+          <SectionLabel>Background</SectionLabel>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'start' }}>
             <div>
-              <SectionLabel>Background</SectionLabel>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-                lineHeight: 1.8, color: '#4A4540', marginBottom: 20, marginTop: 0,
-              }}>
-                My background sits at the intersection of operations, technology, investing, AI implementation, process design, and hands-on business support.
-              </p>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-                lineHeight: 1.8, color: '#4A4540', marginBottom: 20,
-              }}>
-                I am most useful when the problem is ambiguous, the stakes are real, and someone needs to step in, make sense of the mess, and move the work forward.
-              </p>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-                lineHeight: 1.8, color: '#4A4540',
-              }}>
-                I work best with people who value trust, ownership, direct communication, and practical follow-through.
-              </p>
-            </div>
-            <div>
-              <SectionLabel>MIH: Make It Happen</SectionLabel>
-              <div style={{
-                padding: '28px 32px', background: '#F8F6F2',
-                borderTop: '3px solid #2A4535', marginBottom: 24,
-              }}>
-                <p style={{
-                  fontFamily: "'Cormorant Garamond', serif", fontSize: 22,
-                  fontWeight: 500, color: '#1B2B42', lineHeight: 1.5, margin: 0,
-                }}>
-                  "MIH stands for Make It Happen. Not a slogan. The standard for how I approach work."
-                </p>
-              </div>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                lineHeight: 1.8, color: '#6B6560',
-              }}>
-                Clarify the objective. Identify the bottlenecks. Build the system. Keep moving until the work is real.
-              </p>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                lineHeight: 1.8, color: '#6B6560', marginTop: 16,
-              }}>
-                I believe the best operators do not create dependency. They build clarity, systems, and confidence so the business becomes stronger after they leave the room.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact form */}
-      <section style={{ background: '#F8F6F2', padding: '80px 40px' }} id="contact">
-        <div style={wrap}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80 }}>
-            <div>
-              <SectionLabel>Contact</SectionLabel>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 500,
-                color: '#1B2B42', margin: '0 0 20px', lineHeight: 1.2,
+                fontSize: 'clamp(36px, 4vw, 52px)',
+                fontWeight: 500,
+                lineHeight: 1.12,
+                color: '#1B2B42',
+                margin: '0 0 24px',
               }}>
-                Let's clarify what needs to happen next.
+                Built for the messy middle between strategy and execution.
               </h2>
               <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-                lineHeight: 1.8, color: '#6B6560', marginBottom: 36,
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.85,
+                color: '#4A4540',
+                marginBottom: 18,
               }}>
-                Use this form to share the business, project, or operational issue you are trying to move forward. Or reach out directly.
+                My work sits where many owner-led businesses struggle most: the space between good intentions and repeatable execution.
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.85,
+                color: '#4A4540',
+              }}>
+                I am most useful when the business is real, the opportunity is valuable, and the operating layer is too dependent on memory, workarounds, scattered tools, or a few overloaded people.
+              </p>
+            </div>
+
+            <div style={{
+              background: '#fff',
+              border: '1px solid #E2DDD8',
+              padding: 36,
+              boxShadow: '0 12px 36px rgba(27,43,66,0.06)',
+            }}>
+              {[
+                ['Former COO', 'Senior operating experience with responsibility for execution, organization, and follow-through.'],
+                ['Air Force Academy graduate', 'A mindset built on discipline, accountability, and clarity under pressure.'],
+                ['Air Force veteran', 'Leadership experience shaped by structure, mission, and ownership.'],
+                ['Technology and AI fluency', 'Practical understanding of tools, systems, data, workflows, and where AI can reduce friction.'],
+              ].map(([title, body], i) => (
+                <div key={title} style={{
+                  padding: i === 0 ? '0 0 22px' : '22px 0',
+                  borderBottom: i === 3 ? 'none' : '1px solid #E2DDD8',
+                }}>
+                  <h3 style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 13,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: '#1B2B42',
+                    margin: '0 0 8px',
+                  }}>
+                    {title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: '#5A544E',
+                    margin: 0,
+                  }}>
+                    {body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What I bring */}
+      <section style={{ padding: '96px 40px', background: '#fff' }}>
+        <div style={wrap}>
+          <SectionLabel>What I Bring</SectionLabel>
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(36px, 4vw, 52px)',
+            fontWeight: 500,
+            lineHeight: 1.12,
+            color: '#1B2B42',
+            margin: '0 0 40px',
+            maxWidth: 760,
+          }}>
+            Practical judgment for businesses that have outgrown informal systems.
+          </h2>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 28 }}>
+            {strengths.map(([title, body]) => (
+              <div key={title} style={{
+                border: '1px solid #E2DDD8',
+                background: '#F8F6F2',
+                padding: 32,
+                minHeight: 230,
+              }}>
+                <h3 style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: 32,
+                  fontWeight: 500,
+                  color: '#1B2B42',
+                  margin: '0 0 14px',
+                }}>
+                  {title}
+                </h3>
+                <p style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 15,
+                  lineHeight: 1.75,
+                  color: '#4A4540',
+                  margin: 0,
+                }}>
+                  {body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MIH */}
+      <section style={{ padding: '88px 40px', background: '#1B2B42', color: '#fff' }}>
+        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'center' }}>
+          <div>
+            <SectionLabel>MIH: Make It Happen</SectionLabel>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 'clamp(36px, 4vw, 52px)',
+              fontWeight: 500,
+              lineHeight: 1.15,
+              color: '#fff',
+              margin: 0,
+            }}>
+              Clear the mess. Build the system. Move the work forward.
+            </h2>
+          </div>
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 16,
+            lineHeight: 1.85,
+            color: 'rgba(255,255,255,0.76)',
+            margin: 0,
+          }}>
+            MIH stands for Make It Happen. Not as a slogan, but as the standard for the work: clarify the objective, identify the bottlenecks, create the operating structure, and keep moving until the next step is real.
+          </p>
+        </div>
+      </section>
+
+      {/* Principles */}
+      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
+        <div style={wrap}>
+          <SectionLabel>How I Work</SectionLabel>
+          <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 64, alignItems: 'start' }}>
+            <div>
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(36px, 4vw, 52px)',
+                fontWeight: 500,
+                lineHeight: 1.12,
+                color: '#1B2B42',
+                margin: '0 0 18px',
+              }}>
+                The goal is not more complexity.
+              </h2>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: '#4A4540',
+                margin: 0,
+              }}>
+                The goal is less friction, clearer ownership, and useful structure the team can maintain.
+              </p>
+            </div>
+            <div>
+              {principles.map(([title, body], i) => (
+                <div key={title} style={{
+                  padding: '20px 0',
+                  borderBottom: i === principles.length - 1 ? 'none' : '1px solid #E2DDD8',
+                }}>
+                  <h3 style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 14,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: '#1B2B42',
+                    margin: '0 0 8px',
+                  }}>
+                    {title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 15,
+                    lineHeight: 1.75,
+                    color: '#5A544E',
+                    margin: 0,
+                  }}>
+                    {body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact-form" style={{ padding: '96px 40px', background: '#fff' }}>
+        <div style={wrap}>
+          <SectionLabel>Contact</SectionLabel>
+          <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 72, alignItems: 'start' }}>
+            <div>
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(36px, 4vw, 52px)',
+                fontWeight: 500,
+                lineHeight: 1.12,
+                color: '#1B2B42',
+                margin: '0 0 22px',
+              }}>
+                Tell me what feels messy, unclear, or too dependent on you.
+              </h2>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.85,
+                color: '#4A4540',
+                marginBottom: 28,
+              }}>
+                Share the business, project, or operating issue that needs more clarity. The best starting point is usually narrow: one workflow, one dashboard, one role, one handoff, or one operating rhythm.
+              </p>
+              <div style={{
+                background: '#F8F6F2',
+                border: '1px solid #E2DDD8',
+                padding: 28,
+              }}>
+                <h3 style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 13,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: '#1B2B42',
+                  margin: '0 0 14px',
+                }}>
+                  Helpful context
+                </h3>
                 {[
-                  ['Email', 'pmaggio@maggio-mih.com'],
-                ].map(([label, val], i) => (
-                  <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                    <span style={{
-                      fontFamily: "'DM Sans', sans-serif", fontSize: 11,
-                      letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: '#6B6560', minWidth: 60,
-                    }}>{label}</span>
-                    <span style={{
-                      fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                      color: '#1B2B42',
-                    }}>{val}</span>
+                  'What kind of business or project is it?',
+                  'What feels stuck, scattered, or owner-dependent?',
+                  'What tools are already in place?',
+                  'What would make the next 30 days easier?',
+                ].map((item) => (
+                  <div key={item} style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: '#5A544E',
+                    marginBottom: 10,
+                  }}>
+                    — {item}
                   </div>
                 ))}
               </div>
-              <div style={{ marginTop: 48, padding: '24px 28px', border: '1px solid #E2DDD8', background: '#fff' }}>
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 13,
-                  color: '#6B6560', lineHeight: 1.7, margin: 0,
-                }}>
-                  <strong style={{ color: '#1B2B42' }}>Helpful context to share:</strong> What kind of business is it? What is changing, growth, transition, cleanup? What feels messy or overly dependent on one person? What would make the next 30–90 days successful?
-                </p>
-              </div>
             </div>
-            <div>
+
+            <div style={{
+              background: '#F8F6F2',
+              border: '1px solid #E2DDD8',
+              padding: 36,
+            }}>
               {formState.submitted ? (
-                <div style={{
-                  background: '#fff', border: '1px solid #E2DDD8',
-                  padding: '48px 40px', textAlign: 'center',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16,
-                }}>
-                  <div style={{
-                    width: 48, height: 48, borderRadius: '50%',
-                    background: '#2A4535', display: 'flex',
-                    alignItems: 'center', justifyContent: 'center',
-                    fontSize: 20, color: '#fff',
-                  }}>✓</div>
+                <div>
                   <h3 style={{
-                    fontFamily: "'Cormorant Garamond', serif", fontSize: 26,
-                    fontWeight: 500, color: '#1B2B42', margin: 0,
-                  }}>Message received.</h3>
-                  <p style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                    color: '#6B6560', lineHeight: 1.7, maxWidth: 320, margin: 0,
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: 34,
+                    fontWeight: 500,
+                    color: '#1B2B42',
+                    margin: '0 0 12px',
                   }}>
-                    I will follow up within one business day. Thank you for reaching out.
+                    Message opened in your email client.
+                  </h3>
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 15,
+                    lineHeight: 1.75,
+                    color: '#5A544E',
+                  }}>
+                    Send the email from your mail app to complete the inquiry.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} style={{ background: '#fff', padding: '36px 40px', border: '1px solid #E2DDD8' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 0 }}>
-                    <div style={fieldWrap}>
-                      <label style={labelStyle}>Name</label>
-                      <input name="name" value={formState.name} onChange={handleChange} required style={inputStyle} placeholder="Your name" />
-                    </div>
-                    <div style={fieldWrap}>
-                      <label style={labelStyle}>Email</label>
-                      <input name="email" type="email" value={formState.email} onChange={handleChange} required style={inputStyle} placeholder="your@email.com" />
-                    </div>
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                    <div style={fieldWrap}>
-                      <label style={labelStyle}>Company</label>
-                      <input name="company" value={formState.company} onChange={handleChange} style={inputStyle} placeholder="Company name" />
-                    </div>
-                    <div style={fieldWrap}>
-                      <label style={labelStyle}>Your Role</label>
-                      <input name="role" value={formState.role} onChange={handleChange} style={inputStyle} placeholder="Owner, Advisor, Founder…" />
-                    </div>
+                <form onSubmit={handleSubmit}>
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Name</label>
+                    <input name="name" value={formState.name} onChange={handleChange} required style={inputStyle} placeholder="Your name" />
                   </div>
                   <div style={fieldWrap}>
-                    <label style={labelStyle}>What are you trying to clean up or move forward?</label>
-                    <textarea name="message" value={formState.message} onChange={handleChange} required rows={4} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Describe the business situation, challenge, or initiative…" />
+                    <label style={labelStyle}>Email</label>
+                    <input name="email" type="email" value={formState.email} onChange={handleChange} required style={inputStyle} placeholder="your@email.com" />
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+                    <div style={fieldWrap}>
+                      <label style={labelStyle}>Company</label>
+                      <input name="company" value={formState.company} onChange={handleChange} style={inputStyle} placeholder="Company" />
+                    </div>
+                    <div style={fieldWrap}>
+                      <label style={labelStyle}>Role</label>
+                      <input name="role" value={formState.role} onChange={handleChange} style={inputStyle} placeholder="Owner / Founder / Advisor" />
+                    </div>
                   </div>
                   <div style={fieldWrap}>
                     <label style={labelStyle}>Context</label>
                     <select name="context" value={formState.context} onChange={handleChange} style={inputStyle}>
-                      <option value="">Select the best fit…</option>
-                      <option>Growth / scaling</option>
-                      <option>Sale or transition preparation</option>
-                      <option>Operational cleanup / workflow</option>
-                      <option>Investor / diligence support</option>
-                      <option>AI / process improvement</option>
-                      <option>Special project or opportunity</option>
-                      <option>Other</option>
+                      <option value="">Select one</option>
+                      <option value="Operations cleanup / workflow">Operations cleanup / workflow</option>
+                      <option value="Operational readiness assessment">Operational readiness assessment</option>
+                      <option value="Founder / owner operating support">Founder / owner operating support</option>
+                      <option value="AI-assisted operations">AI-assisted operations</option>
+                      <option value="Special project / opportunity">Special project / opportunity</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
-                  <button type="submit" style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 13,
-                    fontWeight: 500, letterSpacing: '0.07em', textTransform: 'uppercase',
-                    background: '#2A4535', color: '#fff',
-                    border: 'none', borderRadius: 2, cursor: 'pointer',
-                    padding: '14px 28px', width: '100%',
-                  }}>
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>What needs to be cleaned up?</label>
+                    <textarea
+                      name="message"
+                      value={formState.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      style={{ ...inputStyle, resize: 'vertical' }}
+                      placeholder="Describe the business situation, workflow, team handoff, dashboard, tool, or operating issue that needs more clarity."
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: '0.07em',
+                      textTransform: 'uppercase',
+                      background: '#2A4535',
+                      color: '#fff',
+                      border: 'none',
+                      padding: '15px 30px',
+                      cursor: 'pointer',
+                      width: '100%',
+                    }}
+                  >
                     Send Message
                   </button>
                 </form>

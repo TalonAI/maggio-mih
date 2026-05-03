@@ -263,9 +263,9 @@ function SectionLabel({ children }) {
     <div
       style={{
         fontFamily: "'DM Sans', sans-serif",
-        fontSize: 11,
-        fontWeight: 500,
-        letterSpacing: '0.16em',
+        fontSize: 12,
+        fontWeight: 700,
+        letterSpacing: '0.14em',
         textTransform: 'uppercase',
         color: '#2A4535',
         marginBottom: 16,

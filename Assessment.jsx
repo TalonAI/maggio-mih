@@ -1,211 +1,377 @@
+import React from 'react';
 
-import React, { useState } from 'react';
-
-// Assessment page...
+// Assessment page
 
 function Assessment({ setActivePage }) {
   const wrap = { maxWidth: 1120, margin: '0 auto', padding: '0 40px' };
 
   const reviewItems = [
-    'Owner dependency and key-person risk',
-    'Workflow and handoff clarity',
-    'Reporting visibility and consistency',
-    'Tool and software usage',
-    'CRM and pipeline discipline',
-    'Back-office processes',
-    'Staff roles and accountability',
-    'SOPs and documentation',
-    'AI and automation opportunities',
-    'Operational risks a buyer, investor, or successor may notice',
+    'Where the owner is still the operating system',
+    'Which workflows depend on memory, workarounds, or informal handoffs',
+    'Where reporting is inconsistent, unreliable, or too hard to find',
+    'Which tools are being used well — and which are creating noise',
+    'Where tasks, email, files, and decisions are scattered',
+    'Where staff need clearer roles, escalation rules, or weekly rhythm',
+    'Where documentation, SOPs, or checklists would reduce dependency',
+    'Where AI or automation could reduce friction without adding complexity',
   ];
 
-  const deliverables = [
-    ['Practical operations map', 'A clear picture of how the business actually runs today.'],
-    ['Top bottlenecks and risks', 'What is most likely to slow growth or transition.'],
-    ['Quick-win opportunities', 'Improvements that can be made quickly with meaningful impact.'],
-    ['AI / automation leverage points', 'Where technology can reduce friction without adding complexity.'],
-    ['Recommended systems and workflows', 'Practical next steps, not abstract recommendations.'],
-    ['30 / 60 / 90-day improvement plan', 'A sequenced roadmap with clear priorities.'],
-    ['Optional implementation support', 'Paul can stay engaged to execute the plan.'],
+  const outputs = [
+    ['Operating layer map', 'A simple picture of how work actually moves through the business today.'],
+    ['Top bottlenecks', 'The few issues creating the most drag, confusion, or owner dependency.'],
+    ['Practical cleanup priorities', 'What should be fixed first, in what order, and why.'],
+    ['Dashboard / reporting recommendations', 'The weekly visibility the owner and team need to make better decisions.'],
+    ['Workflow and tool recommendations', 'How to use existing tools more clearly before adding anything new.'],
+    ['30-day action plan', 'A focused plan designed to make the next month easier to manage.'],
+  ];
+
+  const practicalExamples = [
+    'Monday Operations Dashboard',
+    'Weekly operating rhythm',
+    'Asana / task management cleanup',
+    'Gmail triage rules',
+    'New hire or assistant checklist',
+    'Escalation rules for owner decisions',
+    'One-page workflow map',
+    'Top workflows to clean up next',
   ];
 
   const whenUseful = [
-    'Preparing for a sale or recapitalization',
-    'Planning a leadership handoff or succession',
-    'Getting ready for investor diligence',
-    'Scaling past the point where informal systems work',
-    'Onboarding a new executive who needs to understand the business',
-    'Cleaning up operations after a period of rapid growth',
-    'Evaluating a potential acquisition or portfolio company',
+    'Growth is exposing operational gaps',
+    'The owner is still pulled into too many daily decisions',
+    'A new employee or assistant needs structure quickly',
+    'Work is scattered across email, task tools, folders, spreadsheets, and memory',
+    'Reporting exists, but does not create useful visibility',
+    'The team is busy, but ownership and priorities are unclear',
+    'A business is preparing for sale, diligence, succession, or investor review',
   ];
 
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: '#1B2B42', padding: '140px 40px 100px', color: '#fff' }}>
+      <section style={{ background: '#1B2B42', padding: '140px 40px 96px', color: '#fff' }}>
         <div style={wrap}>
           <div style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 11,
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.4)', marginBottom: 24,
-          }}>Flagship Offer</div>
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 12,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.68)',
+            fontWeight: 700,
+            marginBottom: 24,
+          }}>
+            Flagship Starting Point
+          </div>
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 500,
-            lineHeight: 1.1, color: '#fff', margin: '0 0 24px', maxWidth: 700,
+            fontSize: 'clamp(44px, 6vw, 72px)',
+            fontWeight: 500,
+            lineHeight: 1.08,
+            color: '#fff',
+            margin: '0 0 28px',
+            maxWidth: 780,
           }}>
             Operational Readiness Assessment
           </h1>
           <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 18,
-            lineHeight: 1.7, color: 'rgba(255,255,255,0.65)',
-            maxWidth: 600, marginBottom: 40,
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 18,
+            lineHeight: 1.75,
+            color: 'rgba(255,255,255,0.76)',
+            maxWidth: 680,
+            marginBottom: 36,
           }}>
-            A practical review for owner-led businesses preparing for growth, transition, or operational cleanup.
+            A practical review of the workflows, tools, reporting, handoffs, and owner-dependent processes that make a business harder to run than it should be.
           </p>
-          <Button onClick={() => setActivePage('about')}>Request an Assessment</Button>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+            <Button onClick={() => setActivePage('about')}>Request an Assessment</Button>
+            <Button variant="ghost" onClick={() => setActivePage('services')}>View Services</Button>
+          </div>
         </div>
       </section>
 
-      {/* Intro */}
-      <section style={{ background: '#fff', padding: '80px 40px' }}>
+      {/* What it is */}
+      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
+          <SectionLabel>What It Is</SectionLabel>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 72, alignItems: 'start' }}>
             <div>
-              <SectionLabel>What It Is</SectionLabel>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 500,
-                color: '#1B2B42', margin: '0 0 20px', lineHeight: 1.2,
+                fontSize: 'clamp(36px, 4vw, 52px)',
+                fontWeight: 500,
+                lineHeight: 1.12,
+                color: '#1B2B42',
+                margin: '0 0 24px',
               }}>
-                A practical look at how the business actually runs.
+                Not a generic audit. Not a strategy deck.
               </h2>
               <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-                lineHeight: 1.8, color: '#4A4540', marginBottom: 20,
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: '#4A4540',
+                marginBottom: 18,
               }}>
-                An Operational Readiness Assessment identifies the parts of the business that are unclear, overly manual, founder-dependent, under-documented, or vulnerable during growth or transition.
+                The assessment is designed to identify what is unclear, overloaded, undocumented, or too dependent on the owner — then turn that into practical next steps.
               </p>
               <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-                lineHeight: 1.8, color: '#4A4540', marginBottom: 20,
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: '#4A4540',
               }}>
-                It is designed for companies that are real, valuable, and moving. The operating systems are simply not yet as mature as the business itself.
+                The goal is usable operating clarity: better visibility, cleaner ownership, simpler workflows, and a short list of improvements that can actually be executed.
               </p>
-              <div style={{
-                padding: '24px 28px', borderLeft: '3px solid #2A4535',
-                background: '#F8F6F2', marginTop: 28,
-              }}>
-                <p style={{
-                  fontFamily: "'Cormorant Garamond', serif", fontSize: 20,
-                  fontWeight: 500, color: '#1B2B42', margin: 0, lineHeight: 1.5,
-                }}>
-                  "Buyers do not just buy earnings. They buy confidence that the business can keep working after the owner steps away."
-                </p>
-              </div>
             </div>
-            <div>
-              <SectionLabel>When It Is Useful</SectionLabel>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-                {whenUseful.map((item, i) => (
-                  <div key={i} style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                    color: '#3A3530', padding: '14px 0',
-                    borderBottom: '1px solid #E2DDD8',
-                    display: 'flex', gap: 12, alignItems: 'flex-start',
-                  }}>
-                    <span style={{ color: '#2A4535', fontSize: 16, marginTop: 1 }}>→</span>
-                    {item}
-                  </div>
-                ))}
-              </div>
+
+            <div style={{
+              background: '#fff',
+              border: '1px solid #E2DDD8',
+              padding: 36,
+              boxShadow: '0 12px 36px rgba(27,43,66,0.06)',
+            }}>
+              <h3 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 30,
+                fontWeight: 500,
+                color: '#1B2B42',
+                margin: '0 0 18px',
+              }}>
+                The test:
+              </h3>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 18,
+                lineHeight: 1.7,
+                color: '#2A4535',
+                margin: 0,
+              }}>
+                Does this make the business easier to run next Monday?
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What it reviews */}
-      <section style={{ background: '#F8F6F2', padding: '80px 40px' }}>
+      {/* When useful */}
+      <section style={{ padding: '88px 40px', background: '#fff' }}>
         <div style={wrap}>
-          <SectionLabel>What It Reviews</SectionLabel>
+          <SectionLabel>When It Helps</SectionLabel>
           <h2 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 500,
-            color: '#1B2B42', margin: '0 0 40px', lineHeight: 1.2,
-          }}>Ten areas of operational review.</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 1, background: '#E2DDD8' }}>
-            {reviewItems.map((item, i) => (
+            fontSize: 'clamp(34px, 4vw, 48px)',
+            fontWeight: 500,
+            color: '#1B2B42',
+            margin: '0 0 36px',
+            maxWidth: 760,
+          }}>
+            Use it when the business is working, but the operating layer is not keeping up.
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 18 }}>
+            {whenUseful.map((item, i) => (
               <div key={i} style={{
-                background: '#fff', padding: '24px 28px',
-                display: 'flex', gap: 16, alignItems: 'flex-start',
+                borderTop: '1px solid #E2DDD8',
+                padding: '18px 0',
+                display: 'flex',
+                gap: 14,
               }}>
+                <span style={{ color: '#2A4535', fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}>✓</span>
                 <span style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 11,
-                  color: '#2A4535', letterSpacing: '0.1em',
-                  minWidth: 24, paddingTop: 2,
-                }}>0{i + 1}</span>
-                <span style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                  color: '#3A3530', lineHeight: 1.6,
-                }}>{item}</span>
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 15,
+                  lineHeight: 1.65,
+                  color: '#3A3632',
+                }}>
+                  {item}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Deliverables */}
-      <section style={{ background: '#fff', padding: '80px 40px' }}>
+      {/* Review */}
+      <section style={{ padding: '88px 40px', background: '#F8F6F2' }}>
+        <div style={wrap}>
+          <SectionLabel>What Gets Reviewed</SectionLabel>
+          <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 64, alignItems: 'start' }}>
+            <div>
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(34px, 4vw, 48px)',
+                fontWeight: 500,
+                lineHeight: 1.15,
+                color: '#1B2B42',
+                margin: '0 0 18px',
+              }}>
+                The real operating system underneath the business.
+              </h2>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: '#4A4540',
+              }}>
+                Most operational drag is not caused by one broken tool. It comes from unclear handoffs, scattered information, inconsistent rhythm, and decisions that still have to route through the owner.
+              </p>
+            </div>
+            <div>
+              {reviewItems.map((item, i) => (
+                <div key={i} style={{
+                  padding: '16px 0',
+                  borderBottom: '1px solid #E2DDD8',
+                  display: 'flex',
+                  gap: 14,
+                  alignItems: 'flex-start',
+                }}>
+                  <span style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 12,
+                    color: '#8A827A',
+                    width: 24,
+                    flexShrink: 0,
+                  }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 15,
+                    lineHeight: 1.65,
+                    color: '#2F2B27',
+                  }}>
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Outputs */}
+      <section style={{ padding: '88px 40px', background: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>What You Receive</SectionLabel>
           <h2 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 500,
-            color: '#1B2B42', margin: '0 0 40px', lineHeight: 1.2,
-          }}>Clear output. No filler.</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid #E2DDD8' }}>
-            {deliverables.map(([title, desc], i) => (
+            fontSize: 'clamp(34px, 4vw, 48px)',
+            fontWeight: 500,
+            color: '#1B2B42',
+            margin: '0 0 36px',
+            maxWidth: 760,
+          }}>
+            Clear findings, practical outputs, and the next work to do.
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 24 }}>
+            {outputs.map(([title, body], i) => (
               <div key={i} style={{
-                display: 'grid', gridTemplateColumns: '260px 1fr',
-                gap: 40, padding: '24px 0',
-                borderBottom: '1px solid #E2DDD8', alignItems: 'start',
+                border: '1px solid #E2DDD8',
+                background: '#F8F6F2',
+                padding: 28,
+                minHeight: 190,
               }}>
                 <div style={{
-                  fontFamily: "'Cormorant Garamond', serif", fontSize: 18,
-                  fontWeight: 600, color: '#1B2B42',
-                }}>{title}</div>
-                <div style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                  color: '#6B6560', lineHeight: 1.7,
-                }}>{desc}</div>
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 12,
+                  color: '#8A827A',
+                  marginBottom: 18,
+                }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <h3 style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 15,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: '#1B2B42',
+                  margin: '0 0 12px',
+                }}>
+                  {title}
+                </h3>
+                <p style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 14,
+                  lineHeight: 1.7,
+                  color: '#5A544E',
+                  margin: 0,
+                }}>
+                  {body}
+                </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Practical outputs */}
+      <section style={{ padding: '88px 40px', background: '#1B2B42', color: '#fff' }}>
+        <div style={wrap}>
+          <SectionLabel>Practical Outputs</SectionLabel>
+          <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'start' }}>
+            <div>
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(34px, 4vw, 52px)',
+                fontWeight: 500,
+                lineHeight: 1.15,
+                color: '#fff',
+                margin: '0 0 20px',
+              }}>
+                The best next step may be one dashboard, one checklist, or one operating rhythm.
+              </h2>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: 'rgba(255,255,255,0.74)',
+              }}>
+                The assessment should not create more work. It should point directly to the few outputs that make the business easier to manage.
+              </p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 14 }}>
+              {practicalExamples.map((item, i) => (
+                <div key={i} style={{
+                  border: '1px solid rgba(255,255,255,0.16)',
+                  padding: '18px 20px',
+                  background: 'rgba(255,255,255,0.04)',
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 14,
+                  lineHeight: 1.5,
+                  color: 'rgba(255,255,255,0.82)',
+                }}>
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ background: '#2A4535', padding: '80px 40px' }}>
-        <div style={{ ...wrap, maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 500,
-            color: '#fff', margin: '0 0 20px', lineHeight: 1.2,
-          }}>
-            Ready to get a clear picture of where things stand?
-          </h2>
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-            color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, marginBottom: 36,
-          }}>
-            Request an Operational Readiness Assessment or schedule a conversation to discuss whether it is the right fit.
-          </p>
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button style={{ background: '#fff', color: '#2A4535' }} onClick={() => setActivePage('about')}>
-              Request an Assessment
-            </Button>
-            <Button variant="ghost" onClick={() => setActivePage('about')}>Schedule a Conversation</Button>
+      <section style={{ padding: '80px 40px', background: '#2A4535', color: '#fff' }}>
+        <div style={{ ...wrap, display: 'flex', justifyContent: 'space-between', gap: 40, alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ maxWidth: 640 }}>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 'clamp(34px, 4vw, 48px)',
+              fontWeight: 500,
+              lineHeight: 1.15,
+              margin: '0 0 14px',
+            }}>
+              Start by finding what is unclear, overloaded, or too dependent on the owner.
+            </h2>
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 15,
+              lineHeight: 1.75,
+              color: 'rgba(255,255,255,0.72)',
+              margin: 0,
+            }}>
+              Then turn it into a practical cleanup plan the team can actually use.
+            </p>
           </div>
+          <Button variant="ghost" onClick={() => setActivePage('about')}>Request an Assessment</Button>
         </div>
       </section>
     </div>

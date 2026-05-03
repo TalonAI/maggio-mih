@@ -3,7 +3,8 @@ import React from 'react';
 // Assessment page
 
 function Assessment({ setActivePage }) {
-  const wrap = { maxWidth: 1120, margin: '0 auto', padding: '0 40px' };
+  const isMobile = window.useIsMobile();
+  const wrap = { maxWidth: 1120, margin: '0 auto', padding: isMobile ? '0 22px' : '0 40px' };
 
   const reviewItems = [
     'Where the owner is still the operating system',
@@ -49,7 +50,7 @@ function Assessment({ setActivePage }) {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: '#1B2B42', padding: '140px 40px 96px', color: '#fff' }}>
+      <section style={{ background: '#1B2B42', padding: isMobile ? '104px 22px 58px' : '140px 40px 96px', color: '#fff' }}>
         <div style={wrap}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -68,22 +69,22 @@ function Assessment({ setActivePage }) {
             fontWeight: 500,
             lineHeight: 1.08,
             color: '#fff',
-            margin: '0 0 28px',
+            margin: isMobile ? '0 0 20px' : '0 0 28px',
             maxWidth: 780,
           }}>
             Operational Readiness Assessment
           </h1>
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 18,
-            lineHeight: 1.75,
+            fontSize: isMobile ? 17 : 18,
+            lineHeight: isMobile ? 1.58 : 1.75,
             color: 'rgba(255,255,255,0.76)',
             maxWidth: 680,
-            marginBottom: 36,
+            marginBottom: isMobile ? 24 : 36,
           }}>
             A practical review of the workflows, tools, reporting, handoffs, and owner-dependent processes that make a business harder to run than it should be.
           </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isMobile ? 12 : 14, flexWrap: 'wrap' }}>
             <Button onClick={() => setActivePage('about')}>Request an Assessment</Button>
             <Button variant="ghost" onClick={() => setActivePage('services')}>View Services</Button>
           </div>
@@ -91,10 +92,10 @@ function Assessment({ setActivePage }) {
       </section>
 
       {/* What it is */}
-      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
           <SectionLabel>What It Is</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 72, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.1fr 0.9fr', gap: isMobile ? 28 : 72, alignItems: 'start' }}>
             <div>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -108,8 +109,8 @@ function Assessment({ setActivePage }) {
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
-                lineHeight: 1.8,
+                fontSize: isMobile ? 17 : 16,
+                lineHeight: isMobile ? 1.62 : 1.8,
                 color: '#4A4540',
                 marginBottom: 18,
               }}>
@@ -117,8 +118,8 @@ function Assessment({ setActivePage }) {
               </p>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
-                lineHeight: 1.8,
+                fontSize: isMobile ? 17 : 16,
+                lineHeight: isMobile ? 1.62 : 1.8,
                 color: '#4A4540',
               }}>
                 The goal is usable operating clarity: better visibility, cleaner ownership, simpler workflows, and a short list of improvements that can actually be executed.
@@ -142,7 +143,7 @@ function Assessment({ setActivePage }) {
               </h3>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 18,
+                fontSize: isMobile ? 17 : 18,
                 lineHeight: 1.7,
                 color: '#2A4535',
                 margin: 0,
@@ -155,7 +156,7 @@ function Assessment({ setActivePage }) {
       </section>
 
       {/* When useful */}
-      <section style={{ padding: '88px 40px', background: '#fff' }}>
+      <section style={{ padding: isMobile ? '50px 22px' : '88px 40px', background: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>When It Helps</SectionLabel>
           <h2 style={{
@@ -168,18 +169,18 @@ function Assessment({ setActivePage }) {
           }}>
             Use it when the business is working, but the operating layer is not keeping up.
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 18 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: isMobile ? 14 : 18 }}>
             {whenUseful.map((item, i) => (
               <div key={i} style={{
                 borderTop: '1px solid #E2DDD8',
                 padding: '18px 0',
                 display: 'flex',
-                gap: 14,
+                gap: isMobile ? 12 : 14,
               }}>
                 <span style={{ color: '#2A4535', fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}>✓</span>
                 <span style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
+                  fontSize: isMobile ? 16 : 15,
                   lineHeight: 1.65,
                   color: '#3A3632',
                 }}>
@@ -192,10 +193,10 @@ function Assessment({ setActivePage }) {
       </section>
 
       {/* Review */}
-      <section style={{ padding: '88px 40px', background: '#F8F6F2' }}>
+      <section style={{ padding: isMobile ? '50px 22px' : '88px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
           <SectionLabel>What Gets Reviewed</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 64, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.85fr 1.15fr', gap: isMobile ? 26 : 64, alignItems: 'start' }}>
             <div>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -209,8 +210,8 @@ function Assessment({ setActivePage }) {
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
-                lineHeight: 1.8,
+                fontSize: isMobile ? 17 : 16,
+                lineHeight: isMobile ? 1.62 : 1.8,
                 color: '#4A4540',
               }}>
                 Most operational drag is not caused by one broken tool. It comes from unclear handoffs, scattered information, inconsistent rhythm, and decisions that still have to route through the owner.
@@ -222,7 +223,7 @@ function Assessment({ setActivePage }) {
                   padding: '16px 0',
                   borderBottom: '1px solid #E2DDD8',
                   display: 'flex',
-                  gap: 14,
+                  gap: isMobile ? 12 : 14,
                   alignItems: 'flex-start',
                 }}>
                   <span style={{
@@ -236,7 +237,7 @@ function Assessment({ setActivePage }) {
                   </span>
                   <span style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: 15,
+                    fontSize: isMobile ? 16 : 15,
                     lineHeight: 1.65,
                     color: '#2F2B27',
                   }}>
@@ -250,7 +251,7 @@ function Assessment({ setActivePage }) {
       </section>
 
       {/* Outputs */}
-      <section style={{ padding: '88px 40px', background: '#fff' }}>
+      <section style={{ padding: isMobile ? '50px 22px' : '88px 40px', background: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>What You Receive</SectionLabel>
           <h2 style={{
@@ -263,7 +264,7 @@ function Assessment({ setActivePage }) {
           }}>
             Clear findings, practical outputs, and the next work to do.
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(0, 1fr))', gap: isMobile ? 16 : 24 }}>
             {outputs.map(([title, body], i) => (
               <div key={i} style={{
                 border: '1px solid #E2DDD8',
@@ -281,7 +282,7 @@ function Assessment({ setActivePage }) {
                 </div>
                 <h3 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
+                  fontSize: isMobile ? 16 : 15,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                   color: '#1B2B42',
@@ -305,10 +306,10 @@ function Assessment({ setActivePage }) {
       </section>
 
       {/* Practical outputs */}
-      <section style={{ padding: '88px 40px', background: '#1B2B42', color: '#fff' }}>
+      <section style={{ padding: isMobile ? '50px 22px' : '88px 40px', background: '#1B2B42', color: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>Practical Outputs</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.9fr 1.1fr', gap: isMobile ? 26 : 64, alignItems: 'start' }}>
             <div>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -322,18 +323,18 @@ function Assessment({ setActivePage }) {
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
-                lineHeight: 1.8,
+                fontSize: isMobile ? 17 : 16,
+                lineHeight: isMobile ? 1.62 : 1.8,
                 color: 'rgba(255,255,255,0.74)',
               }}>
                 The assessment should not create more work. It should point directly to the few outputs that make the business easier to manage.
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 14 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: isMobile ? 12 : 14 }}>
               {practicalExamples.map((item, i) => (
                 <div key={i} style={{
                   border: '1px solid rgba(255,255,255,0.16)',
-                  padding: '18px 20px',
+                  padding: isMobile ? '16px 16px' : '18px 20px',
                   background: 'rgba(255,255,255,0.04)',
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 14,
@@ -349,8 +350,8 @@ function Assessment({ setActivePage }) {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '80px 40px', background: '#2A4535', color: '#fff' }}>
-        <div style={{ ...wrap, display: 'flex', justifyContent: 'space-between', gap: 40, alignItems: 'center', flexWrap: 'wrap' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '80px 40px', background: '#2A4535', color: '#fff' }}>
+        <div style={{ ...wrap, display: 'flex', justifyContent: 'space-between', gap: isMobile ? 22 : 40, alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ maxWidth: 640 }}>
             <h2 style={{
               fontFamily: "'Cormorant Garamond', serif",
@@ -363,8 +364,8 @@ function Assessment({ setActivePage }) {
             </h2>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: 15,
-              lineHeight: 1.75,
+              fontSize: isMobile ? 16 : 15,
+              lineHeight: isMobile ? 1.58 : 1.75,
               color: 'rgba(255,255,255,0.72)',
               margin: 0,
             }}>

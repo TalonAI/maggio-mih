@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 // About & Contact page
 
 function About({ setActivePage }) {
-  const wrap = { maxWidth: 1120, margin: '0 auto', padding: '0 40px' };
+  const isMobile = window.useIsMobile();
+  const wrap = { maxWidth: 1120, margin: '0 auto', padding: isMobile ? '0 22px' : '0 40px' };
   const [formState, setFormState] = useState({
     name: '', email: '', company: '', role: '', message: '', context: '', submitted: false,
   });
@@ -65,7 +66,7 @@ function About({ setActivePage }) {
       {/* Hero */}
       <section style={{
         position: 'relative',
-        padding: '160px 40px 118px',
+        padding: isMobile ? '104px 22px 62px' : '160px 40px 118px',
         color: '#fff',
         overflow: 'hidden',
         backgroundImage: 'url(chapel.jpg)',
@@ -95,18 +96,18 @@ function About({ setActivePage }) {
             fontWeight: 500,
             lineHeight: 1.08,
             color: '#fff',
-            margin: '0 0 28px',
+            margin: isMobile ? '0 0 20px' : '0 0 28px',
             maxWidth: 780,
           }}>
             Operator. Translator. Problem-solver.
           </h1>
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 18,
-            lineHeight: 1.75,
+            fontSize: isMobile ? 17 : 18,
+            lineHeight: isMobile ? 1.58 : 1.75,
             color: 'rgba(255,255,255,0.78)',
             maxWidth: 680,
-            marginBottom: 36,
+            marginBottom: isMobile ? 24 : 36,
           }}>
             I help owners and teams turn operational mess into clearer workflows, better visibility, and practical systems that make the business easier to run.
           </p>
@@ -117,10 +118,10 @@ function About({ setActivePage }) {
       </section>
 
       {/* Background */}
-      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
           <SectionLabel>Background</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 28 : 72, alignItems: 'start' }}>
             <div>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -134,7 +135,7 @@ function About({ setActivePage }) {
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
+                fontSize: isMobile ? 17 : 16,
                 lineHeight: 1.85,
                 color: '#4A4540',
                 marginBottom: 18,
@@ -143,7 +144,7 @@ function About({ setActivePage }) {
               </p>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
+                fontSize: isMobile ? 17 : 16,
                 lineHeight: 1.85,
                 color: '#4A4540',
               }}>
@@ -194,7 +195,7 @@ function About({ setActivePage }) {
       </section>
 
       {/* What I bring */}
-      <section style={{ padding: '96px 40px', background: '#fff' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>What I Bring</SectionLabel>
           <h2 style={{
@@ -209,7 +210,7 @@ function About({ setActivePage }) {
             Practical judgment for businesses that have outgrown informal systems.
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 28 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: isMobile ? 18 : 28 }}>
             {strengths.map(([title, body]) => (
               <div key={title} style={{
                 border: '1px solid #E2DDD8',
@@ -228,8 +229,8 @@ function About({ setActivePage }) {
                 </h3>
                 <p style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
-                  lineHeight: 1.75,
+                  fontSize: isMobile ? 16 : 15,
+                  lineHeight: isMobile ? 1.58 : 1.75,
                   color: '#4A4540',
                   margin: 0,
                 }}>
@@ -242,8 +243,8 @@ function About({ setActivePage }) {
       </section>
 
       {/* MIH */}
-      <section style={{ padding: '88px 40px', background: '#1B2B42', color: '#fff' }}>
-        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'center' }}>
+      <section style={{ padding: isMobile ? '50px 22px' : '88px 40px', background: '#1B2B42', color: '#fff' }}>
+        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.9fr 1.1fr', gap: isMobile ? 26 : 64, alignItems: 'center' }}>
           <div>
             <SectionLabel>MIH: Make It Happen</SectionLabel>
             <h2 style={{
@@ -259,7 +260,7 @@ function About({ setActivePage }) {
           </div>
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 16,
+            fontSize: isMobile ? 17 : 16,
             lineHeight: 1.85,
             color: 'rgba(255,255,255,0.76)',
             margin: 0,
@@ -270,10 +271,10 @@ function About({ setActivePage }) {
       </section>
 
       {/* Principles */}
-      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
           <SectionLabel>How I Work</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 64, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.85fr 1.15fr', gap: isMobile ? 26 : 64, alignItems: 'start' }}>
             <div>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -287,8 +288,8 @@ function About({ setActivePage }) {
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
-                lineHeight: 1.8,
+                fontSize: isMobile ? 17 : 16,
+                lineHeight: isMobile ? 1.62 : 1.8,
                 color: '#4A4540',
                 margin: 0,
               }}>
@@ -313,8 +314,8 @@ function About({ setActivePage }) {
                   </h3>
                   <p style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: 15,
-                    lineHeight: 1.75,
+                    fontSize: isMobile ? 16 : 15,
+                    lineHeight: isMobile ? 1.58 : 1.75,
                     color: '#5A544E',
                     margin: 0,
                   }}>
@@ -328,10 +329,10 @@ function About({ setActivePage }) {
       </section>
 
       {/* Contact */}
-      <section id="contact-form" style={{ padding: '96px 40px', background: '#fff' }}>
+      <section id="contact-form" style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>Contact</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 72, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.9fr 1.1fr', gap: isMobile ? 28 : 72, alignItems: 'start' }}>
             <div>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -339,16 +340,16 @@ function About({ setActivePage }) {
                 fontWeight: 500,
                 lineHeight: 1.12,
                 color: '#1B2B42',
-                margin: '0 0 22px',
+                margin: isMobile ? '0 0 16px' : '0 0 22px',
               }}>
                 Tell me what feels messy, unclear, or too dependent on you.
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
+                fontSize: isMobile ? 17 : 16,
                 lineHeight: 1.85,
                 color: '#4A4540',
-                marginBottom: 28,
+                marginBottom: isMobile ? 20 : 28,
               }}>
                 Share the business, project, or operating issue that needs more clarity. The best starting point is usually narrow: one workflow, one dashboard, one role, one handoff, or one operating rhythm.
               </p>
@@ -404,8 +405,8 @@ function About({ setActivePage }) {
                   </h3>
                   <p style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: 15,
-                    lineHeight: 1.75,
+                    fontSize: isMobile ? 16 : 15,
+                    lineHeight: isMobile ? 1.58 : 1.75,
                     color: '#5A544E',
                   }}>
                     Send the email from your mail app to complete the inquiry.
@@ -421,7 +422,7 @@ function About({ setActivePage }) {
                     <label style={labelStyle}>Email</label>
                     <input name="email" type="email" value={formState.email} onChange={handleChange} required style={inputStyle} placeholder="your@email.com" />
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 14 : 18 }}>
                     <div style={fieldWrap}>
                       <label style={labelStyle}>Company</label>
                       <input name="company" value={formState.company} onChange={handleChange} style={inputStyle} placeholder="Company" />
@@ -466,7 +467,7 @@ function About({ setActivePage }) {
                       background: '#2A4535',
                       color: '#fff',
                       border: 'none',
-                      padding: '15px 30px',
+                      padding: isMobile ? '14px 18px' : '15px 30px',
                       cursor: 'pointer',
                       width: '100%',
                     }}

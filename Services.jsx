@@ -3,7 +3,8 @@ import React from 'react';
 // Services / Who I Help page
 
 function Services({ setActivePage }) {
-  const wrap = { maxWidth: 1120, margin: '0 auto', padding: '0 40px' };
+  const isMobile = window.useIsMobile();
+  const wrap = { maxWidth: 1120, margin: '0 auto', padding: isMobile ? '0 22px' : '0 40px' };
 
   const services = [
     {
@@ -62,7 +63,7 @@ function Services({ setActivePage }) {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: '#1B2B42', padding: '140px 40px 96px', color: '#fff' }}>
+      <section style={{ background: '#1B2B42', padding: isMobile ? '104px 22px 58px' : '140px 40px 96px', color: '#fff' }}>
         <div style={wrap}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -81,22 +82,22 @@ function Services({ setActivePage }) {
             fontWeight: 500,
             lineHeight: 1.08,
             color: '#fff',
-            margin: '0 0 28px',
+            margin: isMobile ? '0 0 20px' : '0 0 28px',
             maxWidth: 820,
           }}>
             Practical operating support for businesses that have outgrown informal systems.
           </h1>
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 18,
-            lineHeight: 1.75,
+            fontSize: isMobile ? 17 : 18,
+            lineHeight: isMobile ? 1.58 : 1.75,
             color: 'rgba(255,255,255,0.76)',
             maxWidth: 700,
-            marginBottom: 36,
+            marginBottom: isMobile ? 24 : 36,
           }}>
             Start with what is messy, unclear, scattered, or too dependent on the owner. Then build the operating structure that makes the work easier to see, assign, manage, and complete.
           </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isMobile ? 12 : 14, flexWrap: 'wrap' }}>
             <Button onClick={() => setActivePage('about')}>Schedule a Conversation</Button>
             <Button variant="ghost" onClick={() => setActivePage('assessment')}>Explore the Assessment</Button>
           </div>
@@ -104,8 +105,8 @@ function Services({ setActivePage }) {
       </section>
 
       {/* Core principle */}
-      <section style={{ padding: '78px 40px', background: '#F8F6F2' }}>
-        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'center' }}>
+      <section style={{ padding: isMobile ? '46px 22px' : '78px 40px', background: '#F8F6F2' }}>
+        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.9fr 1.1fr', gap: isMobile ? 26 : 64, alignItems: 'center' }}>
           <div>
             <SectionLabel>Operating Principle</SectionLabel>
             <h2 style={{
@@ -121,7 +122,7 @@ function Services({ setActivePage }) {
           </div>
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 16,
+            fontSize: isMobile ? 17 : 16,
             lineHeight: 1.85,
             color: '#4A4540',
             margin: 0,
@@ -132,7 +133,7 @@ function Services({ setActivePage }) {
       </section>
 
       {/* Services */}
-      <section style={{ padding: '96px 40px', background: '#fff' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#fff' }}>
         <div style={wrap}>
           <SectionLabel>The Work</SectionLabel>
           <h2 style={{
@@ -147,7 +148,7 @@ function Services({ setActivePage }) {
             Clear service lanes, all pointed at the same outcome: cleaner execution.
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 28 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: isMobile ? 18 : 28 }}>
             {services.map((s) => (
               <div key={s.num} style={{
                 border: '1px solid #E2DDD8',
@@ -186,8 +187,8 @@ function Services({ setActivePage }) {
                 </p>
                 <p style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
-                  lineHeight: 1.75,
+                  fontSize: isMobile ? 16 : 15,
+                  lineHeight: isMobile ? 1.58 : 1.75,
                   color: '#4A4540',
                   margin: '0 0 24px',
                 }}>
@@ -213,7 +214,7 @@ function Services({ setActivePage }) {
                         color: '#2F2B27',
                         background: '#fff',
                         border: '1px solid #E2DDD8',
-                        padding: '7px 10px',
+                        padding: isMobile ? '7px 9px' : '7px 10px',
                       }}>
                         {item}
                       </span>
@@ -227,7 +228,7 @@ function Services({ setActivePage }) {
       </section>
 
       {/* Audiences */}
-      <section style={{ padding: '96px 40px', background: '#F8F6F2' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '96px 40px', background: '#F8F6F2' }}>
         <div style={wrap}>
           <SectionLabel>Who It Is For</SectionLabel>
           <h2 style={{
@@ -242,7 +243,7 @@ function Services({ setActivePage }) {
             Best fit: valuable businesses where growth is exposing the gaps.
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(0, 1fr))', gap: isMobile ? 16 : 24 }}>
             {audiences.map(([title, body]) => (
               <div key={title} style={{
                 background: '#fff',
@@ -263,7 +264,7 @@ function Services({ setActivePage }) {
                 <p style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 14,
-                  lineHeight: 1.75,
+                  lineHeight: isMobile ? 1.58 : 1.75,
                   color: '#5A544E',
                   margin: 0,
                 }}>
@@ -276,8 +277,8 @@ function Services({ setActivePage }) {
       </section>
 
       {/* What to expect */}
-      <section style={{ padding: '88px 40px', background: '#1B2B42', color: '#fff' }}>
-        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: '0.95fr 1.05fr', gap: 64, alignItems: 'start' }}>
+      <section style={{ padding: isMobile ? '50px 22px' : '88px 40px', background: '#1B2B42', color: '#fff' }}>
+        <div style={{ ...wrap, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.95fr 1.05fr', gap: isMobile ? 26 : 64, alignItems: 'start' }}>
           <div>
             <SectionLabel>What To Expect</SectionLabel>
             <h2 style={{
@@ -302,12 +303,12 @@ function Services({ setActivePage }) {
                 padding: '18px 0',
                 borderBottom: '1px solid rgba(255,255,255,0.14)',
                 display: 'flex',
-                gap: 14,
+                gap: isMobile ? 12 : 14,
               }}>
                 <span style={{ color: '#fff', opacity: 0.75 }}>—</span>
                 <span style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
+                  fontSize: isMobile ? 16 : 15,
                   lineHeight: 1.7,
                   color: 'rgba(255,255,255,0.76)',
                 }}>
@@ -320,8 +321,8 @@ function Services({ setActivePage }) {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '80px 40px', background: '#2A4535', color: '#fff' }}>
-        <div style={{ ...wrap, display: 'flex', justifyContent: 'space-between', gap: 40, alignItems: 'center', flexWrap: 'wrap' }}>
+      <section style={{ padding: isMobile ? '52px 22px' : '80px 40px', background: '#2A4535', color: '#fff' }}>
+        <div style={{ ...wrap, display: 'flex', justifyContent: 'space-between', gap: isMobile ? 22 : 40, alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ maxWidth: 640 }}>
             <h2 style={{
               fontFamily: "'Cormorant Garamond', serif",
@@ -334,8 +335,8 @@ function Services({ setActivePage }) {
             </h2>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: 15,
-              lineHeight: 1.75,
+              fontSize: isMobile ? 16 : 15,
+              lineHeight: isMobile ? 1.58 : 1.75,
               color: 'rgba(255,255,255,0.72)',
               margin: 0,
             }}>

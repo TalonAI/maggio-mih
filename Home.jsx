@@ -3,21 +3,22 @@ import React from 'react';
 // Home page — StoryBrand refinement focused on clarity, credibility, and practical action
 
 function Home({ setActivePage }) {
-  const wrap = { maxWidth: 1120, margin: '0 auto', padding: '0 40px' };
+  const isMobile = window.useIsMobile();
+  const wrap = { maxWidth: 1120, margin: '0 auto', padding: isMobile ? '0 22px' : '0 40px' };
 
   const h2Style = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 'clamp(30px, 3.5vw, 48px)',
     fontWeight: 500,
     color: '#1B2B42',
-    margin: '0 0 22px',
+    margin: isMobile ? '0 0 16px' : '0 0 22px',
     lineHeight: 1.15,
   };
 
   const bodyStyle = {
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: 15,
-    lineHeight: 1.8,
+    fontSize: isMobile ? 16 : 15,
+    lineHeight: isMobile ? 1.62 : 1.8,
     color: '#4A4540',
     margin: 0,
   };
@@ -25,7 +26,7 @@ function Home({ setActivePage }) {
   const cardStyle = {
     background: '#fff',
     border: '1px solid #E2DDD8',
-    padding: '30px 30px 28px',
+    padding: isMobile ? '22px 20px' : '30px 30px 28px',
   };
 
   // 1. Hero
@@ -33,8 +34,8 @@ function Home({ setActivePage }) {
     <section style={{
       background: '#1B2B42',
       color: '#fff',
-      padding: '160px 40px 120px',
-      minHeight: '90vh',
+      padding: isMobile ? '104px 22px 58px' : '160px 40px 120px',
+      minHeight: isMobile ? 'auto' : '90vh',
       display: 'flex',
       alignItems: 'center',
     }}>
@@ -47,7 +48,7 @@ function Home({ setActivePage }) {
             textTransform: 'uppercase',
             color: 'rgba(255,255,255,0.68)',
             fontWeight: 600,
-            marginBottom: 28,
+            marginBottom: isMobile ? 20 : 28,
           }}>
             Paul Maggio · MIH: Make It Happen
           </div>
@@ -59,7 +60,7 @@ function Home({ setActivePage }) {
             lineHeight: 1.06,
             letterSpacing: '-0.01em',
             color: '#fff',
-            margin: '0 0 28px',
+            margin: isMobile ? '0 0 20px' : '0 0 28px',
             maxWidth: 820,
           }}>
             Your business is too valuable to run on memory, workarounds, and founder instinct.
@@ -67,16 +68,16 @@ function Home({ setActivePage }) {
 
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 18,
-            lineHeight: 1.75,
+            fontSize: isMobile ? 17 : 18,
+            lineHeight: isMobile ? 1.58 : 1.75,
             color: 'rgba(255,255,255,0.72)',
             maxWidth: 680,
-            marginBottom: 40,
+            marginBottom: isMobile ? 28 : 40,
           }}>
             I help owner-led businesses clean up workflows, scattered tools, weak reporting, and owner-dependent processes — so the business becomes easier to run, easier to delegate, and easier to grow.
           </p>
 
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isMobile ? 12 : 14, flexWrap: 'wrap' }}>
             <Button onClick={() => setActivePage('about')}>Schedule a Conversation</Button>
             <Button variant="ghost" onClick={() => setActivePage('assessment')}>Explore the Assessment</Button>
           </div>
@@ -86,7 +87,7 @@ function Home({ setActivePage }) {
             fontSize: 13,
             color: 'rgba(255,255,255,0.58)',
             fontWeight: 500,
-            marginTop: 36,
+            marginTop: isMobile ? 24 : 36,
             lineHeight: 1.6,
             maxWidth: 620,
           }}>
@@ -108,9 +109,9 @@ function Home({ setActivePage }) {
   ];
 
   const problem = (
-    <section style={{ background: '#F8F6F2', padding: '96px 40px' }}>
+    <section style={{ background: '#F8F6F2', padding: isMobile ? '52px 22px' : '96px 40px' }}>
       <div style={wrap}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 28 : 80, alignItems: 'start' }}>
           <div>
             <SectionLabel>The Problem</SectionLabel>
             <h2 style={h2Style}>
@@ -140,7 +141,7 @@ function Home({ setActivePage }) {
               This usually shows up as:
             </div>
 
-            <div style={{ display: 'grid', gap: 14 }}>
+            <div style={{ display: 'grid', gap: isMobile ? 12 : 14 }}>
               {symptoms.map((s, i) => (
                 <div key={i} style={{
                   display: 'flex',
@@ -201,7 +202,7 @@ function Home({ setActivePage }) {
   ];
 
   const whyPaul = (
-    <section style={{ background: '#fff', padding: '96px 40px' }}>
+    <section style={{ background: '#fff', padding: isMobile ? '52px 22px' : '96px 40px' }}>
       <div style={wrap}>
         <div style={{ maxWidth: 720, marginBottom: 48 }}>
           <SectionLabel>Why Maggio MIH</SectionLabel>
@@ -213,7 +214,7 @@ function Home({ setActivePage }) {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 16 : 22 }}>
           {strengths.map((item, i) => (
             <div key={i} style={cardStyle}>
               <div style={{
@@ -275,7 +276,7 @@ function Home({ setActivePage }) {
   ];
 
   const offerSection = (
-    <section style={{ background: '#F8F6F2', padding: '96px 40px' }}>
+    <section style={{ background: '#F8F6F2', padding: isMobile ? '52px 22px' : '96px 40px' }}>
       <div style={wrap}>
         <div style={{ maxWidth: 760, marginBottom: 48 }}>
           <SectionLabel>The Work</SectionLabel>
@@ -287,7 +288,7 @@ function Home({ setActivePage }) {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 26 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 26 }}>
           {offers.map((offer, i) => (
             <div key={i} style={{
               ...cardStyle,
@@ -349,7 +350,7 @@ function Home({ setActivePage }) {
         <div style={{
           marginTop: 34,
           background: '#1B2B42',
-          padding: '28px 34px',
+          padding: isMobile ? '22px 20px' : '28px 34px',
           color: '#fff',
         }}>
           <p style={{
@@ -374,9 +375,9 @@ function Home({ setActivePage }) {
   ];
 
   const process = (
-    <section style={{ background: '#fff', padding: '96px 40px' }}>
+    <section style={{ background: '#fff', padding: isMobile ? '52px 22px' : '96px 40px' }}>
       <div style={wrap}>
-        <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 80, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '0.85fr 1.15fr', gap: isMobile ? 28 : 80, alignItems: 'start' }}>
           <div>
             <SectionLabel>The Plan</SectionLabel>
             <h2 style={h2Style}>
@@ -387,12 +388,12 @@ function Home({ setActivePage }) {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gap: 18 }}>
+          <div style={{ display: 'grid', gap: isMobile ? 14 : 18 }}>
             {steps.map(([num, title, body]) => (
               <div key={num} style={{
                 display: 'grid',
-                gridTemplateColumns: '72px 1fr',
-                gap: 24,
+                gridTemplateColumns: isMobile ? '1fr' : '72px 1fr',
+                gap: isMobile ? 16 : 24,
                 padding: '24px 0',
                 borderBottom: '1px solid #E2DDD8',
               }}>
@@ -425,7 +426,7 @@ function Home({ setActivePage }) {
 
   // 6. Final CTA
   const finalCta = (
-    <section style={{ background: '#F8F6F2', padding: '90px 40px 110px' }}>
+    <section style={{ background: '#F8F6F2', padding: isMobile ? '56px 22px 64px' : '90px 40px 110px' }}>
       <div style={{ ...wrap, textAlign: 'center', maxWidth: 760 }}>
         <SectionLabel>Next Step</SectionLabel>
         <h2 style={{
@@ -440,14 +441,14 @@ function Home({ setActivePage }) {
         </h2>
         <p style={{
           fontFamily: "'DM Sans', sans-serif",
-          fontSize: 15,
+          fontSize: isMobile ? 16 : 15,
           color: '#6B6560',
-          lineHeight: 1.8,
-          marginBottom: 36,
+          lineHeight: isMobile ? 1.62 : 1.8,
+          marginBottom: isMobile ? 24 : 36,
         }}>
           Start with a conversation. We can identify whether the right next move is a narrow cleanup pilot, a broader readiness assessment, or no engagement at all.
         </p>
-        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: isMobile ? 12 : 14, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Button onClick={() => setActivePage('about')}>Schedule a Conversation</Button>
           <Button variant="secondary" onClick={() => setActivePage('services')}>See Services</Button>
         </div>

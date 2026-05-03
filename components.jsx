@@ -3,7 +3,20 @@ import React, { useState, useEffect } from 'react';
 // Shared components: Nav, Footer, Button, SectionLabel
 // Exported to window for use across page files
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  return isMobile;
+}
+
 function Nav({ activePage, setActivePage }) {
+  const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen] = useState(false);
 
@@ -31,7 +44,7 @@ function Nav({ activePage, setActivePage }) {
     backdropFilter: scrolled ? 'blur(8px)' : 'none',
     borderBottom: scrolled ? '1px solid #E2DDD8' : '1px solid transparent',
     transition: 'all 0.3s ease',
-    padding: '0 40px',
+    padding: isMobile ? '0 20px' : '0 40px',
   };
 
   const innerStyle = {
@@ -40,12 +53,12 @@ function Nav({ activePage, setActivePage }) {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 64,
+    height: isMobile ? 58 : 64,
   };
 
   const logoStyle = {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 20,
+    fontSize: isMobile ? 18 : 20,
     fontWeight: 600,
     letterSpacing: '0.02em',
     color: scrolled || menuOpen ? '#1B2B42' : '#ffffff',
@@ -58,7 +71,7 @@ function Nav({ activePage, setActivePage }) {
 
   const linkStyle = (id) => ({
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: 13,
+    fontSize: isMobile ? 14 : 13,
     fontWeight: 400,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
@@ -75,11 +88,12 @@ function Nav({ activePage, setActivePage }) {
     paddingBottom: 2,
     borderBottom: activePage === id ? '1px solid currentColor' : '1px solid transparent',
     transition: 'color 0.2s',
+    display: isMobile ? 'none' : 'inline-block',
   });
 
   const ctaStyle = {
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: 12,
+    fontSize: isMobile ? 11 : 12,
     fontWeight: 500,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
@@ -87,7 +101,7 @@ function Nav({ activePage, setActivePage }) {
     color: '#ffffff',
     border: 'none',
     cursor: 'pointer',
-    padding: '9px 20px',
+    padding: isMobile ? '8px 12px' : '9px 20px',
     borderRadius: 2,
   };
 
@@ -98,7 +112,7 @@ function Nav({ activePage, setActivePage }) {
           Maggio MIH, LLC
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 12 : 32 }}>
           {links.map((l) => (
             <span key={l.id} style={linkStyle(l.id)} onClick={() => setActivePage(l.id)}>
               {l.label}
@@ -115,18 +129,19 @@ function Nav({ activePage, setActivePage }) {
 }
 
 function Footer({ setActivePage }) {
+  const isMobile = useIsMobile();
   const s = {
     wrapper: {
       background: '#1B2B42',
       color: 'rgba(255,255,255,0.55)',
-      padding: '56px 40px 40px',
+      padding: isMobile ? '40px 22px 32px' : '56px 40px 40px',
     },
     inner: { maxWidth: 1120, margin: '0 auto' },
     top: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      marginBottom: 48,
+      marginBottom: isMobile ? 28 : 48,
       flexWrap: 'wrap',
       gap: 32,
     },
@@ -215,18 +230,21 @@ function Footer({ setActivePage }) {
 }
 
 function Button({ children, variant = 'primary', onClick, style: extraStyle }) {
+  const isMobile = useIsMobile();
   const base = {
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: 13,
-    fontWeight: 500,
+    fontSize: isMobile ? 12 : 13,
+    fontWeight: 600,
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
     cursor: 'pointer',
     border: 'none',
     borderRadius: 2,
-    display: 'inline-block',
+    display: isMobile ? 'block' : 'inline-block',
     textDecoration: 'none',
     transition: 'opacity 0.2s',
+    width: isMobile ? '100%' : 'auto',
+    textAlign: 'center',
   };
 
   const variants = {
@@ -259,12 +277,13 @@ function Button({ children, variant = 'primary', onClick, style: extraStyle }) {
 }
 
 function SectionLabel({ children }) {
+  const isMobile = useIsMobile();
   return (
     <div
       style={{
         fontFamily: "'DM Sans', sans-serif",
-        fontSize: 12,
-        fontWeight: 700,
+        fontSize: isMobile ? 11 : 12,
+        fontWeight: 800,
         letterSpacing: '0.14em',
         textTransform: 'uppercase',
         color: '#2A4535',
@@ -280,4 +299,4 @@ function Divider() {
   return <div style={{ borderTop: '1px solid #E2DDD8', margin: '0 auto' }} />;
 }
 
-Object.assign(window, { Nav, Footer, Button, SectionLabel, Divider });
+Object.assign(window, { Nav, Footer, Button, SectionLabel, Divider, useIsMobile });

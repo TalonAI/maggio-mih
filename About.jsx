@@ -79,7 +79,7 @@ function About({ setActivePage }) {
       <div style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: 'url(chapel.jpg)',
+        backgroundImage: 'url(/chapel.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: isMobile ? 'auto 82%' : 'auto 118%',
         backgroundPosition: isMobile ? 'right -105px bottom -12px' : 'right -78px bottom -18px',

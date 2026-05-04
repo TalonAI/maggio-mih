@@ -50,8 +50,40 @@ function Assessment({ setActivePage }) {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: '#1B2B42', padding: isMobile ? '104px 22px 58px' : '140px 40px 96px', color: '#fff' }}>
-        <div style={wrap}>
+      <section style={{
+        position: 'relative',
+        background: '#1B2B42',
+        padding: isMobile ? '104px 22px 58px' : '140px 40px 96px',
+        color: '#fff',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(90deg, #16283f 0%, #1d3756 54%, #4b739c 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'url(chapel.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: isMobile ? 'auto 82%' : 'auto 118%',
+        backgroundPosition: isMobile ? 'right -105px bottom -12px' : 'right -78px bottom -18px',
+        opacity: isMobile ? 0.20 : 0.32,
+        filter: 'grayscale(100%) brightness(1.85) contrast(1.45)',
+        mixBlendMode: 'screen',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to right, rgba(18,30,47,0.97) 0%, rgba(22,38,60,0.93) 34%, rgba(26,47,74,0.76) 60%, rgba(54,91,132,0.34) 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at 86% 44%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 18%, rgba(255,255,255,0) 44%)',
+      }} />
+        <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 12,

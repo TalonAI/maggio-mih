@@ -32,14 +32,42 @@ function Home({ setActivePage }) {
   // 1. Hero
   const hero = (
     <section style={{
+      position: 'relative',
       background: '#1B2B42',
       color: '#fff',
       padding: isMobile ? '104px 22px 58px' : '160px 40px 120px',
       minHeight: isMobile ? 'auto' : '90vh',
       display: 'flex',
       alignItems: 'center',
+      overflow: 'hidden',
     }}>
-      <div style={{ ...wrap, padding: 0, width: '100%' }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(90deg, #16283f 0%, #1d3756 54%, #4b739c 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'url(chapel.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: isMobile ? 'auto 82%' : 'auto 118%',
+        backgroundPosition: isMobile ? 'right -105px bottom -12px' : 'right -78px bottom -18px',
+        opacity: isMobile ? 0.20 : 0.32,
+        filter: 'grayscale(100%) brightness(1.85) contrast(1.45)',
+        mixBlendMode: 'screen',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to right, rgba(18,30,47,0.97) 0%, rgba(22,38,60,0.93) 34%, rgba(26,47,74,0.76) 60%, rgba(54,91,132,0.34) 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at 86% 44%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 18%, rgba(255,255,255,0) 44%)',
+      }} />
+      <div style={{ ...wrap, padding: 0, width: '100%', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: 860 }}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -50,7 +78,7 @@ function Home({ setActivePage }) {
             fontWeight: 600,
             marginBottom: isMobile ? 20 : 28,
           }}>
-            Paul Maggio · MIH: Make It Happen
+            MIH: Make It Happen
           </div>
 
           <h1 style={{
@@ -74,7 +102,7 @@ function Home({ setActivePage }) {
             maxWidth: 680,
             marginBottom: isMobile ? 28 : 40,
           }}>
-            I help owner-led businesses clean up workflows, scattered tools, weak reporting, and owner-dependent processes — so the business becomes easier to run, easier to delegate, and easier to grow.
+            Maggio MIH helps owner-led businesses clean up workflows, scattered tools, weak reporting, and owner-dependent processes — so the business becomes easier to run, easier to delegate, and easier to grow.
           </p>
 
           <div style={{ display: 'flex', gap: isMobile ? 12 : 14, flexWrap: 'wrap' }}>
@@ -118,7 +146,7 @@ function Home({ setActivePage }) {
               You built something real. The operating layer just has not caught up.
             </h2>
             <p style={{ ...bodyStyle, marginBottom: 26 }}>
-              Most owner-led businesses do not become messy because the owner is careless. They become messy because the business grew through hustle, judgment, relationships, and daily problem-solving.
+              Most owner-led businesses do not become harder to run because the owner is careless. They become harder to run because the business grew through hustle, judgment, relationships, and daily problem-solving.
             </p>
             <p style={bodyStyle}>
               That works for a while. Then the same informal systems that helped the business survive start making it harder to scale.
@@ -185,37 +213,41 @@ function Home({ setActivePage }) {
     </section>
   );
 
-  // 3. Why Paul / guide
-  const strengths = [
+  // 3. Prospect outcomes / guide
+  const outcomes = [
     {
-      title: 'COO-level judgment',
-      body: 'I look at how work actually moves through the business: who owns it, where it gets stuck, what is unclear, and what needs to change first.',
+      title: 'You stop being the operating system',
+      body: 'The business should not depend on one person remembering every detail, answering every question, and holding every process together.',
     },
     {
-      title: 'Military discipline',
-      body: 'I value clarity, ownership, follow-through, and calm execution. The point is not more theory. The point is getting useful work organized and moving.',
+      title: 'You get cleaner execution',
+      body: 'Clear workflows, cleaner handoffs, and better accountability help the team move work forward without constant founder intervention.',
     },
     {
-      title: 'Technical depth without tool worship',
-      body: 'I can work across business process, software, AI, reporting, and documentation — but I do not recommend new tools unless they reduce friction.',
+      title: 'You get better visibility',
+      body: 'Stronger reporting and cleaner information flow make it easier to see what is working, what is stuck, and what needs attention.',
+    },
+    {
+      title: 'You get practical implementation',
+      body: 'This is not abstract advice or another strategy deck. The work translates business needs into usable systems, workflows, and next steps.',
     },
   ];
 
   const whyPaul = (
     <section style={{ background: '#fff', padding: isMobile ? '52px 22px' : '96px 40px' }}>
       <div style={wrap}>
-        <div style={{ maxWidth: 720, marginBottom: 48 }}>
-          <SectionLabel>Why Maggio MIH</SectionLabel>
+        <div style={{ maxWidth: 760, marginBottom: 48 }}>
+          <SectionLabel>What Changes For You</SectionLabel>
           <h2 style={h2Style}>
-            Outside perspective for owners who are too close to the daily fire.
+            You get the clarity, structure, and operating discipline your business needs for its next stage.
           </h2>
           <p style={bodyStyle}>
-            Owners are often too busy running the business to redesign how the business runs. I help step back, find the friction, and build practical structure around the work that matters.
+            The point is not to add theory, software, or another layer of complexity. The point is to make the business easier to run, easier to delegate, and easier to trust.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 16 : 22 }}>
-          {strengths.map((item, i) => (
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: isMobile ? 16 : 22 }}>
+          {outcomes.map((item, i) => (
             <div key={i} style={cardStyle}>
               <div style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -241,6 +273,17 @@ function Home({ setActivePage }) {
             </div>
           ))}
         </div>
+
+        <p style={{
+          ...bodyStyle,
+          maxWidth: 820,
+          marginTop: 28,
+          paddingTop: 24,
+          borderTop: '1px solid #E2DDD8',
+          color: '#5A544E',
+        }}>
+          Maggio MIH brings COO-level judgment, Air Force discipline, deep legal-tech and services operations experience, technical fluency, and outside perspective — but the outcome is simple: make the business easier to run, scale, and trust.
+        </p>
       </div>
     </section>
   );

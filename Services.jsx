@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Services / Who I Help page
+// Services page
 
 function Services({ setActivePage }) {
   const isMobile = window.useIsMobile();
@@ -45,7 +45,7 @@ function Services({ setActivePage }) {
     {
       num: '06',
       title: 'Special Projects & Opportunity Assessment',
-      for: 'Owners, investors, or advisors facing a valuable but messy initiative that needs structure.',
+      for: 'Owners, investors, or advisors facing a valuable but unclear initiative that needs structure.',
       body: 'Pressure-test the idea, define the operating model, clarify roles, identify risks, and decide what should be built, paused, or killed.',
       includes: ['Business model review','Operating requirements','Role clarity','90-day test plan','Go / no-go criteria','Implementation roadmap'],
     },
@@ -63,8 +63,40 @@ function Services({ setActivePage }) {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: '#1B2B42', padding: isMobile ? '104px 22px 58px' : '140px 40px 96px', color: '#fff' }}>
-        <div style={wrap}>
+      <section style={{
+        position: 'relative',
+        background: '#1B2B42',
+        padding: isMobile ? '104px 22px 58px' : '140px 40px 96px',
+        color: '#fff',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(90deg, #16283f 0%, #1d3756 54%, #4b739c 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'url(chapel.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: isMobile ? 'auto 82%' : 'auto 118%',
+        backgroundPosition: isMobile ? 'right -105px bottom -12px' : 'right -78px bottom -18px',
+        opacity: isMobile ? 0.20 : 0.32,
+        filter: 'grayscale(100%) brightness(1.85) contrast(1.45)',
+        mixBlendMode: 'screen',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to right, rgba(18,30,47,0.97) 0%, rgba(22,38,60,0.93) 34%, rgba(26,47,74,0.76) 60%, rgba(54,91,132,0.34) 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at 86% 44%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 18%, rgba(255,255,255,0) 44%)',
+      }} />
+        <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 12,
@@ -95,7 +127,7 @@ function Services({ setActivePage }) {
             maxWidth: 700,
             marginBottom: isMobile ? 24 : 36,
           }}>
-            Start with what is messy, unclear, scattered, or too dependent on the owner. Then build the operating structure that makes the work easier to see, assign, manage, and complete.
+            Start with what is unclear, scattered, overloaded, or too dependent on the owner. Then build the operating structure that makes the work easier to see, assign, manage, and complete.
           </p>
           <div style={{ display: 'flex', gap: isMobile ? 12 : 14, flexWrap: 'wrap' }}>
             <Button onClick={() => setActivePage('about')}>Schedule a Conversation</Button>

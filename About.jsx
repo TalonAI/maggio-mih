@@ -69,15 +69,34 @@ function About({ setActivePage }) {
         padding: isMobile ? '104px 22px 62px' : '160px 40px 118px',
         color: '#fff',
         overflow: 'hidden',
-        backgroundImage: 'url(chapel.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 40%',
+        background: '#1B2B42',
       }}>
         <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to right, rgba(27,43,66,0.94) 42%, rgba(27,43,66,0.58) 100%)',
-        }} />
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(90deg, #16283f 0%, #1d3756 54%, #4b739c 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'url(chapel.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: isMobile ? 'auto 82%' : 'auto 118%',
+        backgroundPosition: isMobile ? 'right -105px bottom -12px' : 'right -78px bottom -18px',
+        opacity: isMobile ? 0.20 : 0.32,
+        filter: 'grayscale(100%) brightness(1.85) contrast(1.45)',
+        mixBlendMode: 'screen',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to right, rgba(18,30,47,0.97) 0%, rgba(22,38,60,0.93) 34%, rgba(26,47,74,0.76) 60%, rgba(54,91,132,0.34) 100%)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at 86% 44%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 18%, rgba(255,255,255,0) 44%)',
+      }} />
         <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
           <div style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -109,7 +128,7 @@ function About({ setActivePage }) {
             maxWidth: 680,
             marginBottom: isMobile ? 24 : 36,
           }}>
-            I help owners and teams turn operational mess into clearer workflows, better visibility, and practical systems that make the business easier to run.
+            I help owners and teams turn unclear operations into cleaner workflows, better visibility, and practical systems that make the business easier to run.
           </p>
           <Button onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
             Start a Conversation
@@ -131,7 +150,7 @@ function About({ setActivePage }) {
                 color: '#1B2B42',
                 margin: '0 0 24px',
               }}>
-                Built for the messy middle between strategy and execution.
+                Built for the demanding middle between strategy and execution.
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -159,10 +178,10 @@ function About({ setActivePage }) {
               boxShadow: '0 12px 36px rgba(27,43,66,0.06)',
             }}>
               {[
-                ['Former COO', 'Senior operating experience with responsibility for execution, organization, and follow-through.'],
-                ['Air Force Academy graduate', 'A mindset built on discipline, accountability, and clarity under pressure.'],
-                ['Air Force veteran', 'Leadership experience shaped by structure, mission, and ownership.'],
-                ['Technology and AI fluency', 'Practical understanding of tools, systems, data, workflows, and where AI can reduce friction.'],
+                ['15+ Years COO-Level Leadership', 'Senior operating experience with responsibility for execution, organization, accountability, and follow-through.'],
+                ['25+ Years Legal Tech & Services', 'Deep experience translating complex legal, technical, and service delivery work into clearer process, reporting, and execution.'],
+                ['Air Force Academy Graduate & Air Force Veteran', 'A mindset built on discipline, mission clarity, ownership, and calm execution under pressure.'],
+                ['Technology and AI Fluency', 'Practical understanding of tools, systems, data, workflows, and where AI can reduce friction without adding complexity.'],
               ].map(([title, body], i) => (
                 <div key={title} style={{
                   padding: i === 0 ? '0 0 22px' : '22px 0',
